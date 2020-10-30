@@ -35,6 +35,9 @@ function getPasswdLength() {
     if (passwdLength >= 8 && passwdLength <= 128) {
       console.log(passwdLength);
       wantLower = chooseLower();
+      wantUpper = chooseUpper();
+      wantUpper = chooseNumeric();
+      wantSpecial = chooseSpecial();
       return passwdLength;
     }
     else {
@@ -56,4 +59,13 @@ function chooseUpper() {
   return wantUpper;
 }
 
+function chooseNumeric() {
+  var wantNumeric = confirm("Do you want numeric characters in your password?");
+  console.log("User wants numeric characters: " + wantNumeric);
+  return wantNumeric;
+}
 
+function chooseSpecial() {
+  var wantSpecial = confirm("Do you want special characters in your password?");
+  return wantSpecial;
+}
