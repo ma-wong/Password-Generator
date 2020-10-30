@@ -24,7 +24,6 @@ function passwdCriteria() {
   var criteriaConfirm = confirm("Please select from the following criteria to create your password");
   console.log(criteriaConfirm);
   if (criteriaConfirm === true) {
-    console.log("criteria true")
     passwdLength = getPasswdLength();
   }
 }
@@ -34,6 +33,8 @@ function getPasswdLength() {
     var userInput = prompt('How long do you want your password to be?');
     var passwdLength = parseInt(userInput);
     if (passwdLength >= 8 && passwdLength <= 128) {
+      console.log(passwdLength);
+      wantLower = chooseLower();
       return passwdLength;
     }
     else {
@@ -43,16 +44,16 @@ function getPasswdLength() {
   while (passwdLength < 8 || passwdLength > 128)
 }
 
-function chooseLower () {
-  var wantLower = confirm("Do you want lowercase characters in your password?")
-  if (wantLower === true) {
-    var confirmLower = wantLower;
-    console.log(confirmLower);
-    return confirmLower;
-  }
-  else {
-    var denyLower = wantLower;
-    console.log(denyLower);
-    return denyLower;
-  }
+function chooseLower() {
+  var wantLower = confirm("Do you want lowercase characters in your password?");
+  console.log("User wants lowercase characters: " + wantLower);
+  return wantLower;
 }
+
+function chooseUpper() {
+  var wantUpper = confirm("Do you want uppercase character in your password?");
+  console.log("User wants uppercase characters: " + wantUpper);
+  return wantUpper;
+}
+
+
