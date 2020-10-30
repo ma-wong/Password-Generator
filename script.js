@@ -42,3 +42,17 @@ function getPasswdLength() {
   }
   while (passwdLength < 8 || passwdLength > 128)
 }
+
+function chooseLower () {
+  var wantLower = confirm("Do you want lowercase characters in your password?")
+  if (wantLower === true) {
+    var confirmLower = wantLower;
+    console.log(confirmLower);
+    return confirmLower;
+  }
+  else {
+    var denyLower = wantLower;
+    console.log(denyLower);
+    return denyLower;
+  }
+}
