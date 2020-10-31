@@ -50,22 +50,66 @@ function getPasswdLength() {
 function chooseLower() {
   var wantLower = confirm("Do you want lowercase characters in your password?");
   console.log("User wants lowercase characters: " + wantLower);
-  return wantLower;
+  if (wantLower === true) {
+    lowerRandom = lowerCase[Math.floor(Math.random() * lowerCase.length)];
+    console.log(lowerRandom);
+  } return lowerRandom;
 }
 
 function chooseUpper() {
   var wantUpper = confirm("Do you want uppercase character in your password?");
   console.log("User wants uppercase characters: " + wantUpper);
-  return wantUpper;
+  if (wantUpper === true) {
+    upperRandom = upperCase[Math.floor(Math.random() * upperCase.length)];
+    console.log(upperRandom);
+    return upperRandom;
+  }
 }
 
 function chooseNumeric() {
   var wantNumeric = confirm("Do you want numeric characters in your password?");
   console.log("User wants numeric characters: " + wantNumeric);
-  return wantNumeric;
+  if (wantNumeric === true) {
+    numericRandom = number[Math.floor(Math.random() * number.length)];
+    console.log(numericRandom);
+    return numericRandom
+  }
 }
 
 function chooseSpecial() {
   var wantSpecial = confirm("Do you want special characters in your password?");
-  return wantSpecial;
+  console.log('User wants special characters: ' + wantSpecial);
+  if (wantSpecial === true) {
+    specialRandom = special[Math.floor(Math.random() * special.length)];
+    console.log(specialRandom);
+    return specialRandom;
+  }
 }
+
+
+// // input needs to be validated and at least one character type should be selected
+
+
+// // generate password that matches the selected criteria
+// function generatePassword(wantLower, wantUpper, wantNumeric, wantSpecial) {
+//   var lowerRandom = '';
+//   if (wantLower === true) {
+//     lowerRandom = lowerCase[Math.floor(Math.random() * lowerCase.length)];
+//     console.log(lowerRandom);
+//   }
+//   if (wantUpper === true) {
+//     upperRandom = upperCase[Math.floor(Math.random() * upperCase.length)];
+//     console.log(upperRandom);
+//   }
+//   if (wantNumeric === true) {
+//     numericRandom = number[Math.floor(Math.random() * number.length)];
+//     console.log(numericRandom);
+//   }
+//   if (wantSpecial === true) {
+//     specialRandom = special[Math.floor(Math.random() * special.length)];
+//     console.log(specialRandom);
+//   }
+
+// }
+
+// // display password written to the page
