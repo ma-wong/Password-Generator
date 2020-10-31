@@ -3,7 +3,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  // var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
@@ -34,11 +34,25 @@ function getPasswdLength() {
     var passwdLength = parseInt(userInput);
     if (passwdLength >= 8 && passwdLength <= 128) {
       console.log(passwdLength);
-      wantLower = chooseLower();
-      wantUpper = chooseUpper();
-      wantUpper = chooseNumeric();
-      wantSpecial = chooseSpecial();
-      return passwdLength;
+      var randomCharGenerators = [];
+      var wantLower = confirm("Do you want lowercase characters in your password?");
+      if (wantLower === true) {
+        randomCharGenerators.push(chooseLower);
+      }
+      var wantUpper = confirm("Do you want uppercase character in your password?");
+      if (wantUpper === true) {
+        randomCharGenerators.push(chooseUpper);
+      }
+      var wantNumeric = confirm("Do you want numeric characters in your password?");
+      if (wantNumeric === true) {
+        randomCharGenerators.push(chooseNumeric);
+      }
+      var wantSpecial = confirm("Do you want special characters in your password?");
+      if (wantSpecial === true) {
+        randomCharGenerators.push(chooseSpecial);
+      }
+      password = generatePassword(passwdLength, randomCharGenerators);
+      writePassword(password);
     }
     else {
       alert('Password must be greater than 8 character and less than 128');
@@ -48,68 +62,36 @@ function getPasswdLength() {
 }
 
 function chooseLower() {
-  var wantLower = confirm("Do you want lowercase characters in your password?");
-  console.log("User wants lowercase characters: " + wantLower);
-  if (wantLower === true) {
-    lowerRandom = lowerCase[Math.floor(Math.random() * lowerCase.length)];
-    console.log(lowerRandom);
-  } return lowerRandom;
+  var lowerRandom = lowerCase[Math.floor(Math.random() * lowerCase.length)];
+  console.log(lowerRandom);
+  return lowerRandom;
 }
 
 function chooseUpper() {
-  var wantUpper = confirm("Do you want uppercase character in your password?");
-  console.log("User wants uppercase characters: " + wantUpper);
-  if (wantUpper === true) {
-    upperRandom = upperCase[Math.floor(Math.random() * upperCase.length)];
-    console.log(upperRandom);
-    return upperRandom;
-  }
+  var upperRandom = upperCase[Math.floor(Math.random() * upperCase.length)];
+  console.log(upperRandom);
+  return upperRandom;
 }
 
 function chooseNumeric() {
-  var wantNumeric = confirm("Do you want numeric characters in your password?");
-  console.log("User wants numeric characters: " + wantNumeric);
-  if (wantNumeric === true) {
-    numericRandom = number[Math.floor(Math.random() * number.length)];
-    console.log(numericRandom);
-    return numericRandom
-  }
+  var numericRandom = number[Math.floor(Math.random() * number.length)];
+  console.log(numericRandom);
+  return numericRandom;
 }
 
 function chooseSpecial() {
-  var wantSpecial = confirm("Do you want special characters in your password?");
-  console.log('User wants special characters: ' + wantSpecial);
-  if (wantSpecial === true) {
-    specialRandom = special[Math.floor(Math.random() * special.length)];
-    console.log(specialRandom);
-    return specialRandom;
-  }
+  specialRandom = special[Math.floor(Math.random() * special.length)];
+  console.log(specialRandom);
+  return specialRandom;
 }
 
-
-// // input needs to be validated and at least one character type should be selected
-
-
-// // generate password that matches the selected criteria
-// function generatePassword(wantLower, wantUpper, wantNumeric, wantSpecial) {
-//   var lowerRandom = '';
-//   if (wantLower === true) {
-//     lowerRandom = lowerCase[Math.floor(Math.random() * lowerCase.length)];
-//     console.log(lowerRandom);
-//   }
-//   if (wantUpper === true) {
-//     upperRandom = upperCase[Math.floor(Math.random() * upperCase.length)];
-//     console.log(upperRandom);
-//   }
-//   if (wantNumeric === true) {
-//     numericRandom = number[Math.floor(Math.random() * number.length)];
-//     console.log(numericRandom);
-//   }
-//   if (wantSpecial === true) {
-//     specialRandom = special[Math.floor(Math.random() * special.length)];
-//     console.log(specialRandom);
-//   }
-
-// }
-
-// // display password written to the page
+function generatePassword(passwordLength, randomCharGenerators) {
+  var password = '';
+  for (var i = 0; i < passwordLength; i++) {
+    var charGenerator = randomCharGenerators[Math.floor(Math.random() * randomCharGenerators.length)];
+    var char = charGenerator();
+    password = password + char; 
+  }
+  console.log(password);
+  return password;
+}
