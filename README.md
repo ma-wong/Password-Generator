@@ -21,11 +21,12 @@ Password generator allows you to choose:
 Once the "Generate Password" buttom is pushed, a series of prompts will commence that enable the user to set the criteria in which the password has to meet. The minimum criteria for the code to run includes the password being greater than 8 and less than 128 characters long. One type of character must also be selected to be included. Once all prompts are answered, the code will log the users' preferneces and generate a random password according to the data collected.
 
 ![index](assets/index.png)
-^ Index page
+Index page
 
 ![Example of the prompts](assets/example-prompt.png)
-^ Example of a preference prompt the user must complete
+Example of a preference prompt the user must complete
 
 ![Example of randomly generated password](assets/password-example.png)
-^ Example of a randomly generated password
+Example of a randomly generated password
 
+[Link to password generator page](https://ma-wong.github.io/Password-Generator/)
